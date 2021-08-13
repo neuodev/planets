@@ -14,7 +14,7 @@ What you can expect?
 We have two parts the server and the clinet you need to run both of them.
 
 - clone the repo
-  `shell git clone https://github.com/AhmedIbrahim336/planets.git `
+  `git clone https://github.com/AhmedIbrahim336/planets.git `
 - Navigate into the project directory
   `cd planets`
 - Run the server
