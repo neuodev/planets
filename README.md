@@ -11,6 +11,15 @@ What you can expect?
 
 # Run the project
 
-Naviagte to the project directory and run the following
+We have two parts the server and the clinet you need to run both of them.
 
-        npm i && npm start
+- clone the repo
+        ```shell
+        git clone https://github.com/AhmedIbrahim336/planets.git
+        ```
+- Navigate into the project directory
+  `shell cd planets `
+- Run the server
+  `shell cd server && npm start `
+- Run the Clinet
+  `shell cd client && npm start `
