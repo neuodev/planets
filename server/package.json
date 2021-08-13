@@ -1,0 +1,29 @@
+{
+  "name": "planets-server",
+  "version": "1.0.0",
+  "description": "What you can expect?",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedIbrahim336/planets.git"
+  },
+  "author": "Ahmed Ibrahim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AhmedIbrahim336/planets/issues"
+  },
+  "homepage": "https://github.com/AhmedIbrahim336/planets#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "url2png": "^6.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

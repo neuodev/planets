@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Planet from "./Planet";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import axios from "axios";
 
 const PlanetsList = ({ planets }) => {
   const [planetsList, setPlanetsList] = useState([]);
 
   useEffect(() => {
-    if (planetsList.length == 0) setPlanetsList(planets);
-  }, [planets]);
+    if (planetsList.length === 0) setPlanetsList(planets);
+  }, [planets, planetsList]);
 
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
@@ -31,17 +32,43 @@ const PlanetsList = ({ planets }) => {
 
     setPlanetsList(items);
   };
-
-  function capture() {}
+  const capture = async () => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:9000/screenshot",
+        { plants: planetsList },
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      const link = document.createElement("a");
+      link.href = data.filePath;
+      link.download = "Plants.html";
+      link.target = "_blank";
+      link.click();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
-      <button onClick={capture}>Capture</button>
+      <div className="w-full text-center mt-6">
+        <button
+          onClick={capture}
+          className="bg-indigo-300 text-indigo-700 px-12 py-2 rounded-md uppercase tracking-wider shadow-md"
+        >
+          Capture
+        </button>
+      </div>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
             <div
-              className="flex items-center justify-center flex-col mt-6"
+              id="screenshot"
+              className=" flex items-center justify-center flex-col mt-6"
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
