@@ -4,10 +4,11 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const PlanetsList = ({ planets }) => {
   const [planetsList, setPlanetsList] = useState([]);
+
   useEffect(() => {
     if (planetsList.length == 0) setPlanetsList(planets);
   }, [planets]);
-  console.log(planetsList);
+
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
@@ -30,8 +31,12 @@ const PlanetsList = ({ planets }) => {
 
     setPlanetsList(items);
   };
+
+  function capture() {}
+
   return (
     <>
+      <button onClick={capture}>Capture</button>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
